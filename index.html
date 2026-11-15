@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minibygg Roos – Snickare i Oskarshamns kommun</title>
+    <meta name="description" content="Minibygg Roos är din lokala snickare i Oskarshamns kommun. Altaner, tillbyggnader, renovering, tak, fasad och finsnickeri. ROT-avdrag direkt på fakturan och kostnadsfri offert.">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sv_SE">
+    <meta property="og:title" content="Minibygg Roos – Snickare i Oskarshamns kommun">
+    <meta property="og:description" content="Pålitligt hantverk från kust till inland. Kostnadsfritt hembesök och offert i hela Oskarshamns kommun.">
+    <meta property="og:image" content="minibygg%20roos.png">
+
+    <!-- Strukturerad data: hjälper Google att visa företaget i lokala sökresultat -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Minibygg Roos",
+        "description": "Snickare i Oskarshamns kommun – nybyggnation, tillbyggnad, renovering, tak, fasad och finsnickeri.",
+        "telephone": "+46707141430",
+        "email": "roosminibygg@gmail.com",
+        "image": "minibygg%20roos.png",
+        "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Oskarshamns kommun" },
+            { "@type": "City", "name": "Oskarshamn" },
+            { "@type": "Place", "name": "Figeholm" },
+            { "@type": "Place", "name": "Påskallavik" },
+            { "@type": "Place", "name": "Kristdala" },
+            { "@type": "Place", "name": "Fårbo" },
+            { "@type": "Place", "name": "Bockara" }
+        ],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "07:00",
+            "closes": "17:00"
+        }
+    }
+    </script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#0A0A0A',
+                            dark: '#141414',
+                            gold: '#F5A623',
+                            goldHover: '#E09212',
+                            light: '#F8F9FA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Anpassade stilar för att säkerställa sömlös integration av loggan och mjuka övergångar */
+        html {
+            /* Ankarlänkar (#tjanster m.fl.) hamnar annars under den fasta menyn (h-20 = 5rem) */
+            scroll-padding-top: 5rem;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #141414;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Gör så att bildens svarta bakgrund smälter samman med #0A0A0A */
+        .logo-blend {
+            mix-blend-mode: lighten;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-brand-black">
+
+    <!-- 1. STICKY HEADER / NAVIGERING -->
+    <header class="sticky top-0 z-50 bg-brand-black/95 backdrop-blur-md border-b border-white/10 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logotyp till vänster -->
+                <a href="#" aria-label="Minibygg Roos – till startsidan" class="flex items-center group rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black">
+                    <img 
+                        src="minibygg%20roos.png" 
+                        alt="Minibygg Roos logotyp" 
+                        class="h-12 sm:h-14 w-auto object-contain logo-blend transition-transform duration-300 group-hover:scale-105"
+                        onerror="this.style.display='none'; document.getElementById('header-logo-fallback').classList.remove('hidden');"
+                    >
+                    <!-- Fallback om bilden inte laddas i förhandsvisningen -->
+                    <div id="header-logo-fallback" class="hidden flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-lg bg-brand-gold flex items-center justify-center text-brand-black font-heading font-extrabold text-lg">MR</div>
+                        <div class="leading-tight">
+                            <span class="block text-white font-heading font-extrabold tracking-wide text-base">MINIBYGG <span class="text-brand-gold">ROOS</span></span>
+                            <span class="block text-[10px] text-gray-400 tracking-widest uppercase">Oskarshamns kommun</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop-länkar -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#tjanster" class="text-sm font-medium text-gray-300 hover:text-brand-gold transition-colors">Tjänster</a>
+                    <a href="#om-oss" class="text-sm font-medium text-gray-300 hover:text-brand-gold transition-colors">Om oss</a>
+                    <a href="#projekt" class="text-sm font-medium text-gray-300 hover:text-brand-gold transition-colors">Tidigare projekt</a>
+                    <a href="#kontakt" class="text-sm font-medium text-gray-300 hover:text-brand-gold transition-colors">Kontakt</a>
+                </nav>
+
+                <!-- CTA & Mobilmeny-knapp -->
+                <div class="flex items-center gap-3">
+                    <a href="#kontakt" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-goldHover rounded-xl shadow-lg shadow-brand-gold/20 transition-all duration-200 hover:-translate-y-0.5">
+                        Begär offert
+                    </a>
+                    
+                    <!-- Hamburger-knapp för mobil -->
+                    <button id="mobile-menu-btn" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition-colors">
+                        <svg id="menu-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Utfällbar mobilmeny -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-b border-white/10 px-4 pt-2 pb-6 space-y-2">
+            <a href="#tjanster" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-brand-gold">Tjänster</a>
+            <a href="#om-oss" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-brand-gold">Om oss</a>
+            <a href="#projekt" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-brand-gold">Tidigare projekt</a>
+            <a href="#kontakt" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-brand-gold">Kontakt</a>
+            <div class="pt-2">
+                <a href="#kontakt" class="mobile-link block w-full text-center px-5 py-3.5 rounded-xl text-base font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-goldHover">
+                    Begär kostnadsfri offert
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO-SEKTION -->
+    <section class="relative bg-brand-black text-white overflow-hidden py-16 sm:py-24 lg:py-28 border-b border-white/5">
+        <!-- Subtil bakgrundsglöd i varmgult -->
+        <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+                
+                <!-- Logotyp-visning (Vänster / Centrum på mobil) -->
+                <div class="lg:col-span-6 flex justify-center">
+                    <div class="w-full max-w-md sm:max-w-lg p-2 flex flex-col items-center">
+                        <img 
+                            src="minibygg%20roos.png" 
+                            alt="Minibygg Roos - Snickare i Oskarshamns kommun" 
+                            class="w-full h-auto object-contain logo-blend drop-shadow-2xl"
+                            onerror="this.style.display='none'; document.getElementById('hero-logo-fallback').classList.remove('hidden');"
+                        >
+                        <!-- Stilren SVG-fallback med fyr, hammare, såg och hustak om bildfil saknas -->
+                        <div id="hero-logo-fallback" class="hidden w-full py-8 px-6 rounded-2xl bg-brand-black border border-white/10 text-center">
+                            <svg viewBox="0 0 400 220" role="img" aria-label="Minibygg Roos – Snickare i Oskarshamns kommun" class="w-full max-w-sm mx-auto h-auto">
+                                <path d="M90 110 A 110 110 0 0 1 310 110" fill="none" stroke="#F5A623" stroke-width="5"/>
+                                <path d="M40 120 L120 120 L200 65 L280 120 L360 120" fill="none" stroke="#F5A623" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="186" y="92" width="12" height="12" fill="#FFFFFF"/>
+                                <rect x="202" y="92" width="12" height="12" fill="#FFFFFF"/>
+                                <rect x="186" y="108" width="12" height="12" fill="#FFFFFF"/>
+                                <rect x="202" y="108" width="12" height="12" fill="#FFFFFF"/>
+                                <!-- Fyr -->
+                                <path d="M325 118 L331 65 L343 65 L349 118 Z" fill="#FFFFFF"/>
+                                <rect x="331" y="54" width="12" height="10" fill="#F5A623"/>
+                                <polygon points="329,54 337,45 345,54" fill="#FFFFFF"/>
+                                <text x="200" y="160" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="38" letter-spacing="2">MINIBYGG</text>
+                                <text x="200" y="192" text-anchor="middle" fill="#F5A623" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="30" letter-spacing="4">ROOS</text>
+                                <text x="200" y="212" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="500" font-size="11" letter-spacing="2.5">SNICKARE I OSKARSHAMNS KOMMUN</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Textinnehåll & CTA (Höger) -->
+                <div class="lg:col-span-6 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-gold text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse motion-reduce:animate-none" aria-hidden="true"></span>
+                        Lokalt snickeri i Oskarshamns kommun
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold tracking-tight text-white leading-[1.15]">
+                        Pålitligt hantverk från kust till inland i <span class="text-brand-gold">Oskarshamn</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Vi hjälper dig med allt från altanbyggen och köksrenoveringar till takbyten och finsnickeri i hela Oskarshamns kommun. Alltid med yrkesstolthet, tydlig kommunikation och noggrannhet i varje detalj.
+                    </p>
+
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#kontakt" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 text-base font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-goldHover rounded-xl shadow-lg shadow-brand-gold/25 transition-all duration-200 hover:-translate-y-0.5">
+                            Kontakta oss för kostnadsfri offert
+                        </a>
+                        <a href="#tjanster" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 text-base font-heading font-semibold text-white border border-white/30 hover:border-brand-gold hover:text-brand-gold rounded-xl transition-all duration-200">
+                            Se våra tjänster
+                        </a>
+                    </div>
+
+                    <!-- Snabbfakta under knappar -->
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 max-w-lg mx-auto lg:mx-0 text-left">
+                        <div>
+                            <p class="text-brand-gold font-heading font-bold text-lg sm:text-xl">30&nbsp;% ROT</p>
+                            <p class="text-xs text-gray-400">Avdrag direkt på fakturan</p>
+                        </div>
+                        <div>
+                            <p class="text-white font-heading font-bold text-lg sm:text-xl">F-skatt</p>
+                            <p class="text-xs text-gray-400">& full ansvarsförsäkring</p>
+                        </div>
+                        <div>
+                            <p class="text-white font-heading font-bold text-lg sm:text-xl">Gratis</p>
+                            <p class="text-xs text-gray-400">Hembesök & offert</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TJÄNSTER -->
+    <section id="tjanster" class="py-20 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold font-heading font-bold text-sm uppercase tracking-wider">Våra tjänster</span>
+                <h2 class="mt-2 text-3xl sm:text-4xl font-heading font-extrabold text-brand-dark">
+                    Allt inom bygg och snickeri
+                </h2>
+                <p class="mt-4 text-gray-600 text-base sm:text-lg">
+                    Oavsett om du planerar ett större tillbygge eller behöver hjälp med mindre snickeriarbeten levererar vi hållbara resultat anpassade efter dina önskemål.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Tjänst 1 -->
+                <div class="group bg-brand-light rounded-2xl p-7 border border-gray-200/80 hover:border-brand-gold hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-black text-brand-gold flex items-center justify-center mb-6 group-hover:bg-brand-gold group-hover:text-brand-black transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-brand-dark mb-3">
+                            Nybyggnation & tillbyggnad
+                        </h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Skapa mer utrymme hemma eller på fritidshuset. Vi bygger altaner, inglasade uterum, carportar, garage och kompletta attefallshus från grund till färdigt tak.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/70">
+                        <a href="#kontakt" onclick="selectService('Nybyggnation & tillbyggnad')" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
+                            Fråga om projekt
+                            <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tjänst 2 -->
+                <div class="group bg-brand-light rounded-2xl p-7 border border-gray-200/80 hover:border-brand-gold hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-black text-brand-gold flex items-center justify-center mb-6 group-hover:bg-brand-gold group-hover:text-brand-black transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-brand-dark mb-3">
+                            Renovering
+                        </h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Ge ditt hem nytt liv med en genomtänkt renovering. Vi utför köksmontering, stomarbeten vid badrumsrenovering, golvläggning, planlösningsändringar och energieffektiva fönsterbyten.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/70">
+                        <a href="#kontakt" onclick="selectService('Renovering')" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
+                            Fråga om projekt
+                            <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tjänst 3 -->
+                <div class="group bg-brand-light rounded-2xl p-7 border border-gray-200/80 hover:border-brand-gold hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-black text-brand-gold flex items-center justify-center mb-6 group-hover:bg-brand-gold group-hover:text-brand-black transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-brand-dark mb-3">
+                            Tak & fasad
+                        </h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Skydda huset mot väder och vind vid Smålandskusten. Vi hjälper dig med takläggning, byte av vindskivor, hängrännor, fasadpanel och löpande utvändigt underhåll.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/70">
+                        <a href="#kontakt" onclick="selectService('Tak & fasad')" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
+                            Fråga om projekt
+                            <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tjänst 4 -->
+                <div class="group bg-brand-light rounded-2xl p-7 border border-gray-200/80 hover:border-brand-gold hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-black text-brand-gold flex items-center justify-center mb-6 group-hover:bg-brand-gold group-hover:text-brand-black transition-colors">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-brand-dark mb-3">
+                            Småjobb & finsnickeri
+                        </h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Inget uppdrag är för litet. Vi tillverkar platsbyggda bokhyllor och förvaringslösningar, monterar innerdörrar, lister, foder och utför trä- och snickerireparationer.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200/70">
+                        <a href="#kontakt" onclick="selectService('Småjobb & finsnickeri')" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
+                            Fråga om projekt
+                            <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. VARFÖR VÄLJA MINIBYGG ROOS? (OM OSS) -->
+    <section id="om-oss" class="py-20 sm:py-24 bg-brand-light border-y border-gray-200/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Vänster kolumn: Personlig presentation -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-gold font-heading font-bold text-sm uppercase tracking-wider">Om Minibygg Roos</span>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-brand-dark leading-tight">
+                        Personligt engagemang och lokalt hantverk du kan lita på
+                    </h2>
+                    <p class="text-gray-600 text-base sm:text-lg leading-relaxed">
+                        Minibygg Roos grundades med en enkel idé: att erbjuda privatpersoner och företag i hela Oskarshamns kommun en trygg, rak och jordnära snickare som håller vad han lovar.
+                    </p>
+                    <p class="text-gray-600 text-base leading-relaxed">
+                        Från skärgården och kustsamhällena i <strong>Figeholm</strong> och <strong>Påskallavik</strong> till inlandets skogar runt <strong>Kristdala</strong> och <strong>Bockara</strong> – vi känner till de lokala förutsättningarna och bygger för att det ska hålla i generationer. Hos oss har du samma kontaktperson från första kostnadsfria hembesöket tills sista listen är på plats.
+                    </p>
+
+                    <div class="pt-2">
+                        <div class="inline-flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-700">Oskarshamn</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-700">Figeholm</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-700">Påskallavik</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-700">Kristdala</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-700">Fårbo</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-700">Bockara</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Höger kolumn: 4 nyckelfördelar -->
+                <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <!-- Fördel 1: ROT-avdrag -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200/80">
+                        <div class="w-10 h-10 rounded-xl bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-4 font-heading font-extrabold">
+                            30%
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-brand-dark mb-2">ROT-avdrag direkt</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Vi sköter hela administrationen mot Skatteverket så att du får 30&nbsp;% avdrag på arbetskostnaden direkt på fakturan.
+                        </p>
+                    </div>
+
+                    <!-- Fördel 2: Tydliga offerter -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200/80">
+                        <div class="w-10 h-10 rounded-xl bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-brand-dark mb-2">Tydliga offerter</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Inga dolda avgifter eller överraskningar. Du får en transparent och kostnadsfri offert innan vi sätter igång.
+                        </p>
+                    </div>
+
+                    <!-- Fördel 3: F-skatt & Trygghet -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200/80">
+                        <div class="w-10 h-10 rounded-xl bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-brand-dark mb-2">Godkänd för F-skatt</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Vi är självklart godkända för F-skatt, har ansvarsförsäkring och följer gällande branschregler.
+                        </p>
+                    </div>
+
+                    <!-- Fördel 4: Personlig service -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200/80">
+                        <div class="w-10 h-10 rounded-xl bg-brand-gold/15 text-brand-gold flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-brand-dark mb-2">Personlig service</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Vi lyssnar på dina idéer, ger smarta materialråd och håller alltid ordning och reda på arbetsplatsen.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TIDIGARE PROJEKT / GALLERI -->
+    <section id="projekt" class="py-20 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+                <div>
+                    <span class="text-brand-gold font-heading font-bold text-sm uppercase tracking-wider">Referensjobb</span>
+                    <h2 class="mt-2 text-3xl sm:text-4xl font-heading font-extrabold text-brand-dark">
+                        Utvalda tidigare projekt
+                    </h2>
+                </div>
+                <p class="text-gray-600 max-w-md text-sm sm:text-base">
+                    Ett urval av snickeri- och bygguppdrag vi nyligen utfört åt nöjda kunder runt om i Oskarshamns kommun.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Projektkort 1: Altan med havsutsikt -->
+                <article class="group rounded-2xl overflow-hidden bg-brand-light border border-gray-200/80 hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-60 bg-brand-dark overflow-hidden">
+                        <!-- Stilren arkitektonisk SVG-illustration av altan vid kusten -->
+                        <svg viewBox="0 0 400 240" role="img" aria-label="Illustration: altan med glasräcke och havsutsikt" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none">
+                            <defs>
+                                <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#141414"/>
+                                    <stop offset="100%" stop-color="#262626"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="240" fill="url(#sky1)"/>
+                            <!-- Sol / Måne -->
+                            <circle cx="310" cy="65" r="24" fill="#F5A623" opacity="0.9"/>
+                            <!-- Horisont & Hav -->
+                            <rect x="0" y="125" width="400" height="35" fill="#1F2937"/>
+                            <path d="M20 135 H110 M160 142 H290 M60 150 H210" stroke="#F5A623" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+                            <!-- Trall & Räcke -->
+                            <polygon points="0,240 400,240 360,155 40,155" fill="#D99B52"/>
+                            <line x1="25" y1="175" x2="375" y2="175" stroke="#8C5828" stroke-width="2"/>
+                            <line x1="15" y1="195" x2="385" y2="195" stroke="#8C5828" stroke-width="2"/>
+                            <line x1="5" y1="218" x2="395" y2="218" stroke="#8C5828" stroke-width="2"/>
+                            <!-- Glasräcke med stolpar -->
+                            <rect x="45" y="105" width="310" height="50" fill="#FFFFFF" opacity="0.12" stroke="#FFFFFF" stroke-width="1.5"/>
+                            <rect x="42" y="102" width="6" height="55" fill="#0A0A0A"/>
+                            <rect x="145" y="102" width="6" height="55" fill="#0A0A0A"/>
+                            <rect x="248" y="102" width="6" height="55" fill="#0A0A0A"/>
+                            <rect x="352" y="102" width="6" height="55" fill="#0A0A0A"/>
+                            <rect x="40" y="100" width="320" height="5" rx="2" fill="#F5A623"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-brand-black/80 backdrop-blur-sm text-brand-gold text-xs font-heading font-bold">
+                            Oskarshamn
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-bold text-brand-dark mb-2 group-hover:text-brand-gold transition-colors">
+                            Altan med havsutsikt i Oskarshamn
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Nybyggd 45 kvm trallaltan i kärnfuru med integrerad trappa, vindskydd och underhållsfritt stolp- och glasräcke mot Kalmarsund.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Projektkort 2: Platsbyggt kök i Figeholm -->
+                <article class="group rounded-2xl overflow-hidden bg-brand-light border border-gray-200/80 hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-60 bg-brand-dark overflow-hidden">
+                        <!-- Stilren SVG-illustration av platsbyggt kök -->
+                        <svg viewBox="0 0 400 240" role="img" aria-label="Illustration: platsbyggt kök med ekbänkskiva" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none">
+                            <rect width="400" height="240" fill="#1A1A1A"/>
+                            <!-- Väggpanel -->
+                            <rect x="30" y="25" width="340" height="190" rx="6" fill="#262626"/>
+                            <!-- Överskåp -->
+                            <rect x="50" y="40" width="90" height="65" rx="3" fill="#F8F9FA"/>
+                            <rect x="145" y="40" width="90" height="65" rx="3" fill="#F8F9FA"/>
+                            <!-- Fläktkåpa -->
+                            <polygon points="275,40 315,40 335,95 255,95" fill="#0A0A0A" stroke="#F5A623" stroke-width="2"/>
+                            <!-- Bänkskiva i ek -->
+                            <rect x="45" y="140" width="310" height="8" rx="2" fill="#F5A623"/>
+                            <!-- Underskåp -->
+                            <rect x="50" y="148" width="75" height="67" fill="#E5E7EB"/>
+                            <rect x="128" y="148" width="75" height="67" fill="#E5E7EB"/>
+                            <rect x="206" y="148" width="75" height="67" fill="#E5E7EB"/>
+                            <rect x="284" y="148" width="66" height="67" fill="#E5E7EB"/>
+                            <!-- Handtag -->
+                            <line x1="115" y1="162" x2="115" y2="180" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="138" y1="162" x2="138" y2="180" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="270" y1="162" x2="270" y2="180" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-brand-black/80 backdrop-blur-sm text-brand-gold text-xs font-heading font-bold">
+                            Figeholm
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-bold text-brand-dark mb-2 group-hover:text-brand-gold transition-colors">
+                            Platsbyggt kök i Figeholm
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Total köksrenovering i sekelskiftesvilla med platsbyggda passbitar, massiv ekbänkskiva, pärlspont och specialanpassat skafferi.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Projektkort 3: Fasadrenovering i Påskallavik -->
+                <article class="group rounded-2xl overflow-hidden bg-brand-light border border-gray-200/80 hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-60 bg-brand-dark overflow-hidden">
+                        <!-- Stilren SVG-illustration av fasad & fönster -->
+                        <svg viewBox="0 0 400 240" role="img" aria-label="Illustration: husgavel med stående panel och spröjsade fönster" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none">
+                            <rect width="400" height="240" fill="#141414"/>
+                            <!-- Husgavel -->
+                            <polygon points="80,105 200,30 320,105 320,220 80,220" fill="#2A2A2A"/>
+                            <!-- Stående träpanel linjer -->
+                            <g stroke="#1A1A1A" stroke-width="2">
+                                <line x1="110" y1="86" x2="110" y2="220"/>
+                                <line x1="140" y1="68" x2="140" y2="220"/>
+                                <line x1="170" y1="49" x2="170" y2="220"/>
+                                <line x1="200" y1="30" x2="200" y2="220"/>
+                                <line x1="230" y1="49" x2="230" y2="220"/>
+                                <line x1="260" y1="68" x2="260" y2="220"/>
+                                <line x1="290" y1="86" x2="290" y2="220"/>
+                            </g>
+                            <!-- Tak & Vindskivor -->
+                            <polyline points="62,116 200,28 338,116" fill="none" stroke="#F5A623" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Spröjsade fönster med vita foder -->
+                            <rect x="115" y="130" width="56" height="68" fill="#FFFFFF" rx="2"/>
+                            <rect x="121" y="136" width="20" height="26" fill="#0A0A0A"/>
+                            <rect x="145" y="136" width="20" height="26" fill="#0A0A0A"/>
+                            <rect x="121" y="166" width="20" height="26" fill="#0A0A0A"/>
+                            <rect x="145" y="166" width="20" height="26" fill="#0A0A0A"/>
+
+                            <rect x="229" y="130" width="56" height="68" fill="#FFFFFF" rx="2"/>
+                            <rect x="235" y="136" width="20" height="26" fill="#0A0A0A"/>
+                            <rect x="259" y="136" width="20" height="26" fill="#0A0A0A"/>
+                            <rect x="235" y="166" width="20" height="26" fill="#0A0A0A"/>
+                            <rect x="259" y="166" width="20" height="26" fill="#0A0A0A"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-brand-black/80 backdrop-blur-sm text-brand-gold text-xs font-heading font-bold">
+                            Påskallavik
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-bold text-brand-dark mb-2 group-hover:text-brand-gold transition-colors">
+                            Fasadrenovering i Påskallavik
+                        </h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Byte av stående lockläktpanel, tilläggsisolering, nya vindskivor samt montering av energisnåla spröjsade träfönster med klassiska foder.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. KONTAKT & OFFERTFÖRFRÅGAN -->
+    <section id="kontakt" class="py-20 sm:py-24 bg-brand-light border-t border-gray-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Kontaktuppgifter (Vänster) -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-brand-gold font-heading font-bold text-sm uppercase tracking-wider">Kontakta oss</span>
+                        <h2 class="mt-2 text-3xl sm:text-4xl font-heading font-extrabold text-brand-dark">
+                            Dags att förverkliga ditt byggprojekt?
+                        </h2>
+                        <p class="mt-4 text-gray-600 text-base leading-relaxed">
+                            Hör av dig för ett förutsättningslöst samtal eller boka in ett kostnadsfritt hembesök i Oskarshamns kommun. Vi återkommer normalt inom 24 timmar.
+                        </p>
+                    </div>
+
+                    <div class="space-y-5">
+                        <!-- Telefon -->
+                        <a href="tel:+46707141430" class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-gray-200/80 hover:border-brand-gold transition-colors group">
+                            <div class="w-12 h-12 rounded-xl bg-brand-black text-brand-gold flex items-center justify-center shrink-0 group-hover:bg-brand-gold group-hover:text-brand-black transition-colors">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Ring oss direkt</p>
+                                <p class="text-lg font-heading font-bold text-brand-dark mt-0.5">070-714 14 30</p>
+                                <p class="text-xs text-gray-500 mt-0.5">Vardagar 07:00 – 17:00</p>
+                            </div>
+                        </a>
+
+                        <!-- E-post -->
+                        <a href="mailto:roosminibygg@gmail.com" class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-gray-200/80 hover:border-brand-gold transition-colors group">
+                            <div class="w-12 h-12 rounded-xl bg-brand-black text-brand-gold flex items-center justify-center shrink-0 group-hover:bg-brand-gold group-hover:text-brand-black transition-colors">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Skicka e-post</p>
+                                <p class="text-lg font-heading font-bold text-brand-dark mt-0.5 break-all">roosminibygg@gmail.com</p>
+                                <p class="text-xs text-gray-500 mt-0.5">Bifoga gärna skisser eller bilder</p>
+                            </div>
+                        </a>
+
+                        <!-- Verksamhetsområde -->
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-gray-200/80">
+                            <div class="w-12 h-12 rounded-xl bg-brand-black text-brand-gold flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Verksamhetsområde</p>
+                                <p class="text-lg font-heading font-bold text-brand-dark mt-0.5">Hela Oskarshamns kommun</p>
+                                <p class="text-xs text-gray-500 mt-0.5">Oskarshamn, Figeholm, Påskallavik, Kristdala m.fl.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Offertformulär (Höger) -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-lg border border-gray-200/80">
+                        <h3 class="text-2xl font-heading font-bold text-brand-dark mb-2">
+                            Skicka en offertförfrågan
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-6">
+                            Beskriv kort vad du behöver hjälp med så återkommer vi med förslag på tid och pris.
+                        </p>
+
+                        <!-- Bekräftelsemeddelande (visas efter inskick) -->
+                        <div id="form-success" role="status" aria-live="polite" tabindex="-1" class="hidden rounded-2xl focus:outline-none bg-emerald-50 border border-emerald-200 p-6 text-center space-y-4">
+                            <div class="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-heading font-bold text-emerald-950">Nästan klart – skicka mejlet!</h4>
+                            <p class="text-sm text-emerald-800 max-w-md mx-auto">
+                                Ditt e-postprogram bör nu ha öppnats med förfrågan ifylld. Tryck på <strong>Skicka</strong> där så når den oss. Bifoga gärna bilder eller skisser i samma mejl.
+                            </p>
+                            <p class="text-xs text-emerald-700 max-w-md mx-auto">
+                                Öppnades inget? Använd knappen nedan eller ring oss på <a href="tel:+46707141430" class="font-semibold underline">070-714 14 30</a>.
+                            </p>
+                            <div class="pt-1 flex flex-col sm:flex-row items-center justify-center gap-3">
+                                <a id="mailto-direct-link" href="mailto:roosminibygg@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-goldHover rounded-xl shadow-sm transition-colors">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                    Öppna mejlet igen
+                                </a>
+                                <button type="button" onclick="resetContactForm()" class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2.5 text-xs font-heading font-bold text-emerald-900 bg-emerald-200/70 hover:bg-emerald-200 rounded-xl transition-colors">
+                                    Ändra förfrågan
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Själva formuläret -->
+                        <form id="quote-form" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1.5">Namn *</label>
+                                    <input type="text" id="name" name="name" required maxlength="100" autocomplete="name" placeholder="För- och efternamn"
+                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
+                                </div>
+                                <div>
+                                    <label for="contact-info" class="block text-sm font-medium text-gray-700 mb-1.5">Telefon eller E-post *</label>
+                                    <input type="text" id="contact-info" name="contact-info" required maxlength="100" autocomplete="tel" placeholder="070-123 45 67 eller namn@epost.se"
+                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="project-type" class="block text-sm font-medium text-gray-700 mb-1.5">Typ av projekt</label>
+                                    <select id="project-type" name="project-type"
+                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
+                                        <option value="Nybyggnation & tillbyggnad">Nybyggnation & tillbyggnad (Altan, uterum m.m.)</option>
+                                        <option value="Renovering">Renovering (Kök, golv, fönster m.m.)</option>
+                                        <option value="Tak & fasad">Tak & fasad</option>
+                                        <option value="Småjobb & finsnickeri">Småjobb & finsnickeri</option>
+                                        <option value="Övrigt">Övrigt / Vet ej ännu</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="location" class="block text-sm font-medium text-gray-700 mb-1.5">Ort i kommunen</label>
+                                    <input type="text" id="location" name="location" maxlength="60" autocomplete="address-level2" placeholder="T.ex. Oskarshamn, Figeholm..."
+                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1.5">Beskriv ditt projekt *</label>
+                                <textarea id="message" name="message" rows="4" required maxlength="1200" placeholder="Berätta gärna lite om ungefärliga mått, önskad tidsplan eller andra funderingar..."
+                                    class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 px-6 rounded-xl bg-brand-gold hover:bg-brand-goldHover text-brand-black font-heading font-bold text-base shadow-lg shadow-brand-gold/25 transition-all duration-200 hover:-translate-y-0.5">
+                                Skicka offertförfrågan
+                            </button>
+                            <p class="text-xs text-center text-gray-500">
+                                Knappen öppnar ditt e-postprogram med förfrågan ifylld. Kostnadsfritt och utan förbindelser – dina uppgifter används bara för att besvara förfrågan.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SIDFOT (FOOTER) -->
+    <footer class="bg-brand-black text-gray-400 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center pb-10 border-b border-white/10">
+                <!-- Logotyp i sidfot -->
+                <div class="md:col-span-5 flex flex-col items-center md:items-start">
+                    <a href="#" class="inline-block">
+                        <img 
+                            src="minibygg%20roos.png" 
+                            alt="Minibygg Roos logotyp" 
+                            class="h-24 w-auto object-contain logo-blend"
+                            onerror="this.style.display='none'; document.getElementById('footer-logo-fallback').classList.remove('hidden');"
+                        >
+                        <div id="footer-logo-fallback" class="hidden">
+                            <span class="text-white font-heading font-extrabold text-2xl">MINIBYGG <span class="text-brand-gold">ROOS</span></span>
+                            <span class="block text-xs text-gray-400 tracking-widest uppercase mt-1">Snickare i Oskarshamns kommun</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Snabblänkar -->
+                <div class="md:col-span-4 flex flex-col items-center md:items-start space-y-2.5">
+                    <h4 class="text-white font-heading font-bold text-sm uppercase tracking-wider mb-1">Snabblänkar</h4>
+                    <a href="#tjanster" class="text-sm hover:text-brand-gold transition-colors">Våra tjänster</a>
+                    <a href="#om-oss" class="text-sm hover:text-brand-gold transition-colors">Om Minibygg Roos</a>
+                    <a href="#projekt" class="text-sm hover:text-brand-gold transition-colors">Tidigare projekt</a>
+                    <a href="#kontakt" class="text-sm hover:text-brand-gold transition-colors">Begär offert</a>
+                </div>
+
+                <!-- Kontakt i sidfot -->
+                <div class="md:col-span-3 flex flex-col items-center md:items-start space-y-2.5 text-center md:text-left">
+                    <h4 class="text-white font-heading font-bold text-sm uppercase tracking-wider mb-1">Kontakt</h4>
+                    <p class="text-sm text-gray-300">Tel: <a href="tel:+46707141430" class="hover:text-brand-gold transition-colors">070-714 14 30</a></p>
+                    <p class="text-sm text-gray-300">E-post: <a href="mailto:roosminibygg@gmail.com" class="hover:text-brand-gold transition-colors break-all">roosminibygg@gmail.com</a></p>
+                    <p class="text-xs text-gray-500 pt-1">Godkänd för F-skatt • ROT-avdrag</p>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>&copy; <span id="current-year"></span> Minibygg Roos. Alla rättigheter förbehållna.</p>
+                <p>Lokalt snickeri i Oskarshamns kommun</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interaktivitet & Formulärhantering -->
+    <script>
+        const CONTACT_EMAIL = 'roosminibygg@gmail.com';
+        let lastMailtoUrl = `mailto:${CONTACT_EMAIL}`;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sätt aktuellt årtal i sidfoten
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+
+            // ---- Mobilmeny ----
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('menu-icon-open');
+            const iconClose = document.getElementById('menu-icon-close');
+
+            const setMenuOpen = (open) => {
+                if (!menuBtn || !mobileMenu) return;
+                mobileMenu.classList.toggle('hidden', !open);
+                iconOpen?.classList.toggle('hidden', open);
+                iconClose?.classList.toggle('hidden', !open);
+                menuBtn.setAttribute('aria-expanded', String(open));
+                menuBtn.setAttribute('aria-label', open ? 'Stäng meny' : 'Öppna meny');
+            };
+
+            menuBtn?.addEventListener('click', () => {
+                setMenuOpen(mobileMenu.classList.contains('hidden'));
+            });
+            // Stäng menyn när man valt en länk
+            document.querySelectorAll('.mobile-link').forEach((link) => {
+                link.addEventListener('click', () => setMenuOpen(false));
+            });
+            // Stäng med Escape och lämna tillbaka fokus till knappen
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && menuBtn?.getAttribute('aria-expanded') === 'true') {
+                    setMenuOpen(false);
+                    menuBtn.focus();
+                }
+            });
+            // Stäng om skärmen breddas till desktop-läge
+            window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => {
+                if (e.matches) setMenuOpen(false);
+            });
+
+            // ---- Offertformulär → förifyllt mejl ----
+            const quoteForm = document.getElementById('quote-form');
+            const formSuccess = document.getElementById('form-success');
+            const mailtoDirectLink = document.getElementById('mailto-direct-link');
+
+            if (quoteForm && formSuccess) {
+                quoteForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const val = (id) => document.getElementById(id)?.value.trim() || '';
+                    const nameVal = val('name');
+                    const contactVal = val('contact-info');
+                    const projectVal = val('project-type');
+                    const locationVal = val('location');
+                    const messageVal = val('message');
+
+                    const subject = `Offertförfrågan: ${projectVal}${locationVal ? ` (${locationVal})` : ''}`;
+                    const bodyText = [
+                        'Hej Minibygg Roos!',
+                        '',
+                        'Jag vill gärna begära en offert för följande projekt:',
+                        '',
+                        `Typ av projekt: ${projectVal}`,
+                        locationVal ? `Ort: ${locationVal}` : null,
+                        '',
+                        'Beskrivning:',
+                        messageVal,
+                        '',
+                        'Vänliga hälsningar,',
+                        nameVal,
+                        `Kontaktuppgifter: ${contactVal}`
+                    ].filter((line) => line !== null).join('\r\n');
+
+                    // encodeURIComponent gör att tecken som & ? # och radbrytningar
+                    // inte kan bryta eller manipulera mailto-länken
+                    lastMailtoUrl = `mailto:${CONTACT_EMAIL}`
+                        + `?subject=${encodeURIComponent(subject)}`
+                        + `&body=${encodeURIComponent(bodyText)}`;
+
+                    if (mailtoDirectLink) {
+                        mailtoDirectLink.href = lastMailtoUrl;
+                    }
+
+                    quoteForm.classList.add('hidden');
+                    formSuccess.classList.remove('hidden');
+                    formSuccess.focus();
+
+                    // Öppna besökarens e-postprogram direkt
+                    window.location.href = lastMailtoUrl;
+                });
+            }
+        });
+
+        // Förvälj tjänst i formuläret när användaren klickar på ett tjänstekort
+        function selectService(serviceName) {
+            const selectEl = document.getElementById('project-type');
+            if (selectEl) {
+                selectEl.value = serviceName;
+            }
+        }
+
+        // Visa formuläret igen (fälten behålls så man kan justera och skicka på nytt)
+        function resetContactForm() {
+            const quoteForm = document.getElementById('quote-form');
+            const formSuccess = document.getElementById('form-success');
+            if (quoteForm && formSuccess) {
+                formSuccess.classList.add('hidden');
+                quoteForm.classList.remove('hidden');
+                document.getElementById('name')?.focus();
+            }
+        }
+    </script>
+</body>
+</html>
