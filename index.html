@@ -2,6 +2,10 @@
 <html lang="sv" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <!-- Säkerhet: Content-Security-Policy styr vilka källor sidan får ladda skript, stilar, typsnitt och bilder från -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+    <!-- Skicka bara domännamnet (inte hela adressen) som referrer till andra sajter -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minibygg Roos – Snickare i Oskarshamns kommun</title>
     <meta name="description" content="Minibygg Roos är din lokala snickare i Oskarshamns kommun. Altaner, tillbyggnader, renovering, tak, fasad och finsnickeri. ROT-avdrag direkt på fakturan och kostnadsfri offert.">
@@ -39,57 +43,13 @@
         }
     }
     </script>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/main.js" defer></script>
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            black: '#0A0A0A',
-                            dark: '#141414',
-                            gold: '#F5A623',
-                            goldHover: '#E09212',
-                            light: '#F8F9FA'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Anpassade stilar för att säkerställa sömlös integration av loggan och mjuka övergångar */
-        html {
-            /* Ankarlänkar (#tjanster m.fl.) hamnar annars under den fasta menyn (h-20 = 5rem) */
-            scroll-padding-top: 5rem;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FFFFFF;
-            color: #141414;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, .font-heading {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        /* Gör så att bildens svarta bakgrund smälter samman med #0A0A0A */
-        .logo-blend {
-            mix-blend-mode: lighten;
-        }
-    </style>
 </head>
 <body class="antialiased selection:bg-brand-gold selection:text-brand-black">
 
@@ -102,11 +62,10 @@
                     <img 
                         src="minibygg%20roos.png" 
                         alt="Minibygg Roos logotyp" 
-                        class="h-12 sm:h-14 w-auto object-contain logo-blend transition-transform duration-300 group-hover:scale-105"
-                        onerror="this.style.display='none'; document.getElementById('header-logo-fallback').classList.remove('hidden');"
+                        class="h-12 sm:h-14 w-auto object-contain logo-blend transition-transform duration-300 group-hover:scale-105" data-fallback="header-logo-fallback"
                     >
                     <!-- Fallback om bilden inte laddas i förhandsvisningen -->
-                    <div id="header-logo-fallback" class="hidden flex items-center gap-2.5">
+                    <div id="header-logo-fallback" data-display="flex" class="hidden items-center gap-2.5">
                         <div class="w-9 h-9 rounded-lg bg-brand-gold flex items-center justify-center text-brand-black font-heading font-extrabold text-lg">MR</div>
                         <div class="leading-tight">
                             <span class="block text-white font-heading font-extrabold tracking-wide text-base">MINIBYGG <span class="text-brand-gold">ROOS</span></span>
@@ -125,7 +84,7 @@
 
                 <!-- CTA & Mobilmeny-knapp -->
                 <div class="flex items-center gap-3">
-                    <a href="#kontakt" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-goldHover rounded-xl shadow-lg shadow-brand-gold/20 transition-all duration-200 hover:-translate-y-0.5">
+                    <a href="#kontakt" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-gold-hover rounded-xl shadow-lg shadow-brand-gold/20 transition-all duration-200 hover:-translate-y-0.5">
                         Begär offert
                     </a>
                     
@@ -149,7 +108,7 @@
             <a href="#projekt" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-brand-gold">Tidigare projekt</a>
             <a href="#kontakt" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hover:bg-white/5 hover:text-brand-gold">Kontakt</a>
             <div class="pt-2">
-                <a href="#kontakt" class="mobile-link block w-full text-center px-5 py-3.5 rounded-xl text-base font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-goldHover">
+                <a href="#kontakt" class="mobile-link block w-full text-center px-5 py-3.5 rounded-xl text-base font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-gold-hover">
                     Begär kostnadsfri offert
                 </a>
             </div>
@@ -170,8 +129,7 @@
                         <img 
                             src="minibygg%20roos.png" 
                             alt="Minibygg Roos - Snickare i Oskarshamns kommun" 
-                            class="w-full h-auto object-contain logo-blend drop-shadow-2xl"
-                            onerror="this.style.display='none'; document.getElementById('hero-logo-fallback').classList.remove('hidden');"
+                            class="w-full h-auto object-contain logo-blend drop-shadow-2xl" data-fallback="hero-logo-fallback"
                         >
                         <!-- Stilren SVG-fallback med fyr, hammare, såg och hustak om bildfil saknas -->
                         <div id="hero-logo-fallback" class="hidden w-full py-8 px-6 rounded-2xl bg-brand-black border border-white/10 text-center">
@@ -210,7 +168,7 @@
                     </p>
 
                     <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="#kontakt" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 text-base font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-goldHover rounded-xl shadow-lg shadow-brand-gold/25 transition-all duration-200 hover:-translate-y-0.5">
+                        <a href="#kontakt" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 text-base font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-gold-hover rounded-xl shadow-lg shadow-brand-gold/25 transition-all duration-200 hover:-translate-y-0.5">
                             Kontakta oss för kostnadsfri offert
                         </a>
                         <a href="#tjanster" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 text-base font-heading font-semibold text-white border border-white/30 hover:border-brand-gold hover:text-brand-gold rounded-xl transition-all duration-200">
@@ -269,7 +227,7 @@
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-gray-200/70">
-                        <a href="#kontakt" onclick="selectService('Nybyggnation & tillbyggnad')" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
+                        <a href="#kontakt" data-service="Nybyggnation & tillbyggnad" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
                             Fråga om projekt
                             <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
@@ -292,7 +250,7 @@
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-gray-200/70">
-                        <a href="#kontakt" onclick="selectService('Renovering')" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
+                        <a href="#kontakt" data-service="Renovering" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
                             Fråga om projekt
                             <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
@@ -315,7 +273,7 @@
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-gray-200/70">
-                        <a href="#kontakt" onclick="selectService('Tak & fasad')" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
+                        <a href="#kontakt" data-service="Tak & fasad" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
                             Fråga om projekt
                             <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
@@ -338,7 +296,7 @@
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-gray-200/70">
-                        <a href="#kontakt" onclick="selectService('Småjobb & finsnickeri')" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
+                        <a href="#kontakt" data-service="Småjobb & finsnickeri" class="inline-flex items-center text-sm font-heading font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
                             Fråga om projekt
                             <svg class="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
@@ -672,30 +630,36 @@
                                 Öppnades inget? Använd knappen nedan eller ring oss på <a href="tel:+46707141430" class="font-semibold underline">070-714 14 30</a>.
                             </p>
                             <div class="pt-1 flex flex-col sm:flex-row items-center justify-center gap-3">
-                                <a id="mailto-direct-link" href="mailto:roosminibygg@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-goldHover rounded-xl shadow-sm transition-colors">
+                                <a id="mailto-direct-link" href="mailto:roosminibygg@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-heading font-bold text-brand-black bg-brand-gold hover:bg-brand-gold-hover rounded-xl shadow-sm transition-colors">
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                     </svg>
                                     Öppna mejlet igen
                                 </a>
-                                <button type="button" onclick="resetContactForm()" class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2.5 text-xs font-heading font-bold text-emerald-900 bg-emerald-200/70 hover:bg-emerald-200 rounded-xl transition-colors">
+                                <button type="button" id="reset-form-btn" class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2.5 text-xs font-heading font-bold text-emerald-900 bg-emerald-200/70 hover:bg-emerald-200 rounded-xl transition-colors">
                                     Ändra förfrågan
                                 </button>
                             </div>
                         </div>
 
                         <!-- Själva formuläret -->
+                        <noscript>
+                            <p class="mb-5 rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900">
+                                Formuläret kräver JavaScript. Ring <a href="tel:+46707141430" class="font-semibold underline">070-714 14 30</a>
+                                eller mejla <a href="mailto:roosminibygg@gmail.com" class="font-semibold underline">roosminibygg@gmail.com</a> i stället.
+                            </p>
+                        </noscript>
                         <form id="quote-form" class="space-y-5">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1.5">Namn *</label>
                                     <input type="text" id="name" name="name" required maxlength="100" autocomplete="name" placeholder="För- och efternamn"
-                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
                                 </div>
                                 <div>
                                     <label for="contact-info" class="block text-sm font-medium text-gray-700 mb-1.5">Telefon eller E-post *</label>
                                     <input type="text" id="contact-info" name="contact-info" required maxlength="100" autocomplete="tel" placeholder="070-123 45 67 eller namn@epost.se"
-                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
                                 </div>
                             </div>
 
@@ -714,17 +678,17 @@
                                 <div>
                                     <label for="location" class="block text-sm font-medium text-gray-700 mb-1.5">Ort i kommunen</label>
                                     <input type="text" id="location" name="location" maxlength="60" autocomplete="address-level2" placeholder="T.ex. Oskarshamn, Figeholm..."
-                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all">
                                 </div>
                             </div>
 
                             <div>
                                 <label for="message" class="block text-sm font-medium text-gray-700 mb-1.5">Beskriv ditt projekt *</label>
                                 <textarea id="message" name="message" rows="4" required maxlength="1200" placeholder="Berätta gärna lite om ungefärliga mått, önskad tidsplan eller andra funderingar..."
-                                    class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all"></textarea>
+                                    class="w-full px-4 py-3 rounded-xl bg-brand-light border border-gray-300 text-brand-dark placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full py-4 px-6 rounded-xl bg-brand-gold hover:bg-brand-goldHover text-brand-black font-heading font-bold text-base shadow-lg shadow-brand-gold/25 transition-all duration-200 hover:-translate-y-0.5">
+                            <button type="submit" class="w-full py-4 px-6 rounded-xl bg-brand-gold hover:bg-brand-gold-hover text-brand-black font-heading font-bold text-base shadow-lg shadow-brand-gold/25 transition-all duration-200 hover:-translate-y-0.5">
                                 Skicka offertförfrågan
                             </button>
                             <p class="text-xs text-center text-gray-500">
@@ -748,8 +712,7 @@
                         <img 
                             src="minibygg%20roos.png" 
                             alt="Minibygg Roos logotyp" 
-                            class="h-24 w-auto object-contain logo-blend"
-                            onerror="this.style.display='none'; document.getElementById('footer-logo-fallback').classList.remove('hidden');"
+                            class="h-24 w-auto object-contain logo-blend" data-fallback="footer-logo-fallback"
                         >
                         <div id="footer-logo-fallback" class="hidden">
                             <span class="text-white font-heading font-extrabold text-2xl">MINIBYGG <span class="text-brand-gold">ROOS</span></span>
@@ -783,123 +746,5 @@
         </div>
     </footer>
 
-    <!-- Interaktivitet & Formulärhantering -->
-    <script>
-        const CONTACT_EMAIL = 'roosminibygg@gmail.com';
-        let lastMailtoUrl = `mailto:${CONTACT_EMAIL}`;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Sätt aktuellt årtal i sidfoten
-            const yearEl = document.getElementById('current-year');
-            if (yearEl) {
-                yearEl.textContent = new Date().getFullYear();
-            }
-
-            // ---- Mobilmeny ----
-            const menuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const iconOpen = document.getElementById('menu-icon-open');
-            const iconClose = document.getElementById('menu-icon-close');
-
-            const setMenuOpen = (open) => {
-                if (!menuBtn || !mobileMenu) return;
-                mobileMenu.classList.toggle('hidden', !open);
-                iconOpen?.classList.toggle('hidden', open);
-                iconClose?.classList.toggle('hidden', !open);
-                menuBtn.setAttribute('aria-expanded', String(open));
-                menuBtn.setAttribute('aria-label', open ? 'Stäng meny' : 'Öppna meny');
-            };
-
-            menuBtn?.addEventListener('click', () => {
-                setMenuOpen(mobileMenu.classList.contains('hidden'));
-            });
-            // Stäng menyn när man valt en länk
-            document.querySelectorAll('.mobile-link').forEach((link) => {
-                link.addEventListener('click', () => setMenuOpen(false));
-            });
-            // Stäng med Escape och lämna tillbaka fokus till knappen
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && menuBtn?.getAttribute('aria-expanded') === 'true') {
-                    setMenuOpen(false);
-                    menuBtn.focus();
-                }
-            });
-            // Stäng om skärmen breddas till desktop-läge
-            window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => {
-                if (e.matches) setMenuOpen(false);
-            });
-
-            // ---- Offertformulär → förifyllt mejl ----
-            const quoteForm = document.getElementById('quote-form');
-            const formSuccess = document.getElementById('form-success');
-            const mailtoDirectLink = document.getElementById('mailto-direct-link');
-
-            if (quoteForm && formSuccess) {
-                quoteForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-
-                    const val = (id) => document.getElementById(id)?.value.trim() || '';
-                    const nameVal = val('name');
-                    const contactVal = val('contact-info');
-                    const projectVal = val('project-type');
-                    const locationVal = val('location');
-                    const messageVal = val('message');
-
-                    const subject = `Offertförfrågan: ${projectVal}${locationVal ? ` (${locationVal})` : ''}`;
-                    const bodyText = [
-                        'Hej Minibygg Roos!',
-                        '',
-                        'Jag vill gärna begära en offert för följande projekt:',
-                        '',
-                        `Typ av projekt: ${projectVal}`,
-                        locationVal ? `Ort: ${locationVal}` : null,
-                        '',
-                        'Beskrivning:',
-                        messageVal,
-                        '',
-                        'Vänliga hälsningar,',
-                        nameVal,
-                        `Kontaktuppgifter: ${contactVal}`
-                    ].filter((line) => line !== null).join('\r\n');
-
-                    // encodeURIComponent gör att tecken som & ? # och radbrytningar
-                    // inte kan bryta eller manipulera mailto-länken
-                    lastMailtoUrl = `mailto:${CONTACT_EMAIL}`
-                        + `?subject=${encodeURIComponent(subject)}`
-                        + `&body=${encodeURIComponent(bodyText)}`;
-
-                    if (mailtoDirectLink) {
-                        mailtoDirectLink.href = lastMailtoUrl;
-                    }
-
-                    quoteForm.classList.add('hidden');
-                    formSuccess.classList.remove('hidden');
-                    formSuccess.focus();
-
-                    // Öppna besökarens e-postprogram direkt
-                    window.location.href = lastMailtoUrl;
-                });
-            }
-        });
-
-        // Förvälj tjänst i formuläret när användaren klickar på ett tjänstekort
-        function selectService(serviceName) {
-            const selectEl = document.getElementById('project-type');
-            if (selectEl) {
-                selectEl.value = serviceName;
-            }
-        }
-
-        // Visa formuläret igen (fälten behålls så man kan justera och skicka på nytt)
-        function resetContactForm() {
-            const quoteForm = document.getElementById('quote-form');
-            const formSuccess = document.getElementById('form-success');
-            if (quoteForm && formSuccess) {
-                formSuccess.classList.add('hidden');
-                quoteForm.classList.remove('hidden');
-                document.getElementById('name')?.focus();
-            }
-        }
-    </script>
 </body>
 </html>

@@ -1,0 +1,60 @@
+/*
+ * Källfil för Tailwind CSS (v4).
+ * Bygg om assets/css/styles.css efter att du ändrat klasser i index.html:
+ *
+ *   npx @tailwindcss/cli -i src/input.css -o assets/css/styles.css --minify
+ *
+ * Tailwind letar själv upp klasserna i index.html och main.js och
+ * genererar bara den CSS som faktiskt används.
+ */
+@import "tailwindcss";
+
+@source "../index.html";
+@source "../assets/js/main.js";
+
+/* Ersätter den gamla tailwind.config i <head> */
+@theme {
+    --font-sans: "Inter", sans-serif;
+    --font-heading: "Plus Jakarta Sans", sans-serif;
+
+    --color-brand-black: #0A0A0A;
+    --color-brand-dark: #141414;
+    --color-brand-gold: #F5A623;
+    --color-brand-gold-hover: #E09212;
+    --color-brand-light: #F8F9FA;
+}
+
+/* Ersätter det gamla <style>-blocket i <head> */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        /* Ankarlänkar hamnar annars under den fasta menyn (h-20 = 5rem) */
+        scroll-padding-top: 5rem;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+    }
+    body {
+        font-family: var(--font-sans);
+        background-color: #FFFFFF;
+        color: #141414;
+        overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+        font-family: var(--font-heading);
+    }
+    /* Tailwind v4 har currentColor som standard-kantfärg; v3 hade gray-200 */
+    *, ::before, ::after {
+        border-color: var(--color-gray-200, currentColor);
+    }
+    button:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+@layer components {
+    /* Gör så att loggans svarta bakgrund smälter samman med #0A0A0A */
+    .logo-blend {
+        mix-blend-mode: lighten;
+    }
+}
